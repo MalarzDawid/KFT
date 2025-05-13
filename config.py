@@ -159,8 +159,8 @@ class ConfigScreen:
         self.accent_color = (70, 120, 200)
         
         # Create buttons
-        self.save_button = ModernButton(550, 600, 180, 50, "Zapisz i Generuj", (60, 180, 100), (80, 210, 120))
-        self.back_button = ModernButton(50, 600, 150, 50, "Powrót", (180, 70, 70), (210, 90, 90))
+        self.save_button = ModernButton(980, 650, 180, 50, "Zapisz i Generuj", (60, 180, 100), (80, 210, 120))
+        self.back_button = ModernButton(1010, 720, 150, 50, "Powrót", (180, 70, 70), (210, 90, 90))
         
         # Universe prompt input
         self.prompt_box = ModernInputBox(250, 70, 460, 40, "Star Wars", label="Uniwersum:", placeholder="Podaj nazwę uniwersum...")
@@ -177,6 +177,9 @@ class ConfigScreen:
 
         # Music file input
         self.music_box = ModernInputBox(800, 310, 360, 40, "music.mp3", label="Plik muzyczny:", placeholder="Podaj nazwę pliku...")
+
+        # Background file input
+        self.bg_box = ModernInputBox(800, 380, 360, 40, "bg.png", label="Plik tła:", placeholder="Podaj nazwę pliku...")
 
         # Inputs for number of answers
         self.answer_inputs = []
@@ -209,6 +212,12 @@ class ConfigScreen:
                     self.music_box.text = str(data["music"])
                     self.music_box.txt_surface = self.music_box.font.render(
                         self.music_box.text, True, pygame.Color('white')
+                    )
+
+                if "bg_img" in data:
+                    self.bg_box.text = str(data["bg_img"])
+                    self.bg_box.txt_surface = self.bg_box.font.render(
+                        self.bg_box.text, True, pygame.Color('white')
                     )
                 
                 if "bg_color" in data:
@@ -243,6 +252,7 @@ class ConfigScreen:
         # Handle inputs
         self.prompt_box.handle_event(event)
         self.music_box.handle_event(event)
+        self.bg_box.handle_event(event)
         self.color_picker.handle_event(event)
         
         for answer_input in self.answer_inputs:
@@ -256,7 +266,7 @@ class ConfigScreen:
         self.screen.fill(self.bg_color)
         
         # Draw main panel
-        main_panel = pygame.Rect(40, 40, 720, 550)
+        main_panel = pygame.Rect(40, 40, 720, 590)
         pygame.draw.rect(self.screen, self.panel_color, main_panel, border_radius=10)
         pygame.draw.rect(self.screen, (60, 60, 80), main_panel, 2, border_radius=10)
         
@@ -268,7 +278,7 @@ class ConfigScreen:
         self.prompt_box.draw(self.screen)
         
         # Questions section
-        questions_rect = pygame.Rect(70, 130, 660, 220)
+        questions_rect = pygame.Rect(70, 130, 660, 470)
         pygame.draw.rect(self.screen, (45, 45, 65), questions_rect, border_radius=6)
         
         # Header for questions
@@ -301,6 +311,8 @@ class ConfigScreen:
         
         # Draw music file input
         self.music_box.draw(self.screen)
+        # Draw bg file input
+        self.bg_box.draw(self.screen)
         
         # Draw buttons
         self.save_button.draw(self.screen)
@@ -340,6 +352,7 @@ class ConfigScreen:
         data = {
             "prompt": self.prompt_box.get_value(),
             "music": self.music_box.get_value(),
+            "bg_img": self.bg_box.get_value(),
             "bg_color": list(self.color_picker.selected_color),
             "questions": [
                 {"text": question, 

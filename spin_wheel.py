@@ -6,9 +6,10 @@ from pygame import gfxdraw
 import time
 from constants import CENTER, WHEEL_RADIUS, SEGMENT_COLORS, FONT_SIZE
 import pygame.mixer
+import os
 
 pygame.mixer.init()
-SPIN_SOUND = pygame.mixer.Sound("sample.mp3")
+SPIN_SOUND = pygame.mixer.Sound(os.path.join("assets","sfx","spin.mp3"))
 
 
 class SpinWheel:
@@ -30,9 +31,10 @@ class SpinWheel:
             self.spin_sound.play(-1)
             # Random initial velocity between 720 and 1080 degrees per second
             # Negative value for clockwise rotation
-            self.angular_velocity = -1080
+            modifier = random.uniform(0.5, 1.5)
+            self.angular_velocity = -1080 * modifier # -1080
             # Random additional rotation between 2 and 10 full rotations
-            additional_rotation = random.uniform(6.8, 6.8) * 360
+            additional_rotation = 6.8 * modifier * 360
             self.target_angle = self.angle - additional_rotation  # Subtract for clockwise
             # Calculate deceleration to stop at target_angle
             # Using the formula: v²/2a = distance

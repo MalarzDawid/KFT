@@ -12,6 +12,7 @@ import sys
 class MultipleDrawsApp:
     def __init__(self, screen, config):
         self.screen = screen
+        self.isresultsaved = False
         self.config = config
         self.total_draws = len(self.config["questions"])
         self.current_draw = 0
@@ -52,7 +53,7 @@ class MultipleDrawsApp:
         
         # Convert result to a filename format
         safe_result = str(result)
-        gif_path = f"gifs/{safe_result}.gif"
+        gif_path = os.path.join('assets','gifs',f"{safe_result}.gif")
         
         # Check if the GIF exists
         if not os.path.exists(gif_path):
@@ -155,7 +156,14 @@ class MultipleDrawsApp:
     
     def draw(self, surface):
         # Clear the screen
-        surface.fill((240, 240, 240))
+        surface.fill(tuple(self.config["bg_color"]))
+        try:
+            if self.config["bg_img"] != "None":
+                img = pygame.image.load(os.path.join('assets','backgrounds', self.config["bg_img"]))
+                surface.fill((128,128,128))
+                surface.blit(img,(0,0),None, pygame.BLEND_RGB_ADD)
+        except:
+            pass
         
         if self.state == "spinning" or self.state == "waiting":
             # Draw the wheel
@@ -187,7 +195,7 @@ class MultipleDrawsApp:
             # Show the result text above the GIF
             result = self.results[-1]
             result_text = self.font.render(f"Result: {result}", True, (0, 0, 0))
-            self.screen.blit(result_text, (WIDTH // 2 - result_text.get_width() // 2, 50))
+            self.screen.blit(result_text, (WIDTH // 2 - result_text.get_width() // 2, 30))
             
             # Show the response text below the GIF
             response = self.result_responses[-1]
@@ -227,10 +235,17 @@ class MultipleDrawsApp:
                 result_y += 40
             
             # Draw restart button
-            pygame.draw.rect(surface, (100, 100, 255), (WIDTH//2 - 100, HEIGHT - 100, 200, 50), border_radius=10)
-            pygame.draw.rect(surface, (0, 0, 0), (WIDTH//2 - 100, HEIGHT - 100, 200, 50), 2, border_radius=10)
-            menu_text = self.font.render("Zakończ", True, (0, 0, 0))
-            self.screen.blit(menu_text, (WIDTH // 2 - menu_text.get_width() // 2, HEIGHT - 90))
+            pygame.draw.rect(surface, (100, 100, 255), (WIDTH//2 - 300, HEIGHT - 100, 200, 50), border_radius=10)
+            pygame.draw.rect(surface, (0, 0, 0), (WIDTH//2 - 300, HEIGHT - 100, 200, 50), 2, border_radius=10)
+            end_text = self.font.render("Zakończ", True, (0, 0, 0))
+
+            color = (100, 255, 100) if self.isresultsaved else (100, 100, 255)
+            pygame.draw.rect(surface, color, (WIDTH//2 , HEIGHT - 100, 250, 50), border_radius=10)
+            pygame.draw.rect(surface, (0, 0, 0), (WIDTH//2 , HEIGHT - 100, 250, 50), 2, border_radius=10)
+            save_text = self.font.render("Zapisz wynik", True, (0, 0, 0))
+
+            self.screen.blit(end_text, (WIDTH // 2 - end_text.get_width() - 270 // 2, HEIGHT - 90))
+            self.screen.blit(save_text, (WIDTH // 2 - save_text.get_width() + 450 // 2, HEIGHT - 90))
     
     def wrap_text(self, text, font, max_width):
         """Wrap text to fit within a specified width"""
@@ -262,7 +277,11 @@ class MultipleDrawsApp:
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 # Check if restart button was clicked
                 mouse_pos = pygame.mouse.get_pos()
-                button_rect = pygame.Rect(WIDTH//2 - 100, HEIGHT - 100, 200, 50)
-                if button_rect.collidepoint(mouse_pos):
+                exit_button = pygame.Rect(WIDTH//2 - 300, HEIGHT - 100, 200, 50)
+                save_button = pygame.Rect(WIDTH//2 , HEIGHT - 100, 250, 50)
+                if exit_button.collidepoint(mouse_pos):
                     pygame.quit()
                     sys.exit()
+                elif save_button.collidepoint(mouse_pos):
+                    pygame.image.save(self.screen, "result.png")
+                    self.isresultsaved = True

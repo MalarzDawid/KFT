@@ -4,6 +4,7 @@ from constants import WIDTH, HEIGHT, FPS
 from menu import Menu
 from config import ConfigScreen
 from app import MultipleDrawsApp  # Your existing game logic
+import os
 
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -21,10 +22,12 @@ def main():
     app = None
 
     running = True
-    pygame.mixer.music.load("music.mp3")
-    pygame.mixer.music.set_volume(0.0)
-    pygame.mixer.music.play(-1)
-    
+    try:
+        pygame.mixer.music.load(os.path.join('assets','backgrounds', config.get_config()["music"]))
+        pygame.mixer.music.set_volume(0.01)
+        pygame.mixer.music.play(-1)
+    except:
+        pass
 
     while running:
         
