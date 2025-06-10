@@ -1,0 +1,722 @@
+{
+  "1": {
+    "1/10": [
+      "Bro, that's a rough start. Respect for surviving.",
+      "Ain’t no way you made it outta there, for real.",
+      "That’s gotta be the lowest of the low, sheesh.",
+      "You started from the bottom-bottom, huh?",
+      "Man, that’s a whole struggle story right there."
+    ],
+    "2/10": [
+      "Damn, that’s wild. How you even deal with that?",
+      "Bro, that’s some next-level tough. Couldn’t be me.",
+      "You really came up from that? Mad props.",
+      "That’s a crazy place to come from, not gonna lie.",
+      "I can’t believe you made it through all that."
+    ],
+    "3/10": [
+      "That’s kinda mid, not gonna lie.",
+      "Bro, that’s a whole lotta nothing.",
+      "Sounds like you had to make your own fun.",
+      "Not the worst, but definitely not the best.",
+      "That’s a classic ‘meh’ origin story."
+    ],
+    "4/10": [
+      "Alright, that’s not too bad. Could be worse.",
+      "You started out decent, respect.",
+      "That’s a pretty chill spot to come from.",
+      "Solid, but nothing to brag about.",
+      "You got outta there and leveled up, huh?"
+    ],
+    "5/10": [
+      "Okay, that’s a respectable background.",
+      "Bro, that’s a solid foundation.",
+      "You started out on neutral ground, I see.",
+      "That’s a balanced start, can’t complain.",
+      "Middle of the pack, but you made it work."
+    ],
+    "6/10": [
+      "Yo, that’s a step up! Not bad at all.",
+      "Bro, you came from a good place, for real.",
+      "You had some advantages, I see you.",
+      "That’s a strong start, no cap.",
+      "You got a head start, respect."
+    ],
+    "7/10": [
+      "Sheesh, that’s impressive! Not everyone gets that.",
+      "Bro, you came up with some real energy.",
+      "That’s a power move origin story.",
+      "You started out winning, huh?",
+      "That’s where the real ones come from!"
+    ],
+    "8/10": [
+      "Legendary beginnings, bro. That’s fire.",
+      "You got that epic origin story, I see you.",
+      "That’s a flex, for real.",
+      "Not many can say that, respect.",
+      "Bro, you started out on another level."
+    ],
+    "9/10": [
+      "Bro, that’s top-tier! Can’t get much better.",
+      "That’s an elite background, for real.",
+      "You basically started at the top.",
+      "That’s a whole movie intro right there.",
+      "Bro, you’re built different from the jump."
+    ],
+    "10/10": [
+      "Ayo, that’s god-tier! Can’t top that.",
+      "Bro, you spawned in the legend zone.",
+      "That’s a perfect start, no debate.",
+      "You basically started in the Hall of Fame.",
+      "That’s the ultimate origin story, respect!"
+    ]
+  },
+  "2": {
+    "1/10": [
+      "Bro, that’s the lowest tier possible.",
+      "You really out here with NPC energy.",
+      "That’s background character vibes for real.",
+      "Man, you barely even in the story.",
+      "That’s tough, gotta step it up."
+    ],
+    "2/10": [
+      "That’s barely above invisible, bro.",
+      "You just floating through, huh?",
+      "Not much presence, but you exist.",
+      "Almost made the cut, maybe next time.",
+      "That’s a quiet life, for sure."
+    ],
+    "3/10": [
+      "You got some underdog energy, I see.",
+      "Not quite there yet, but on the way.",
+      "You’re in the mix, just not the main act.",
+      "That’s a slow grind, keep pushing.",
+      "You got potential, just gotta unlock it."
+    ],
+    "4/10": [
+      "You got some low-key vibes, respect.",
+      "Not flashy, but you’re holding it down.",
+      "You’re making moves in the background.",
+      "Solid, but still warming up.",
+      "You’re in the game, just not leading yet."
+    ],
+    "5/10": [
+      "That’s a wildcard move, I like it.",
+      "You got some hype, keep it up.",
+      "You’re clutch when it counts.",
+      "You’re coming up, no doubt.",
+      "That’s main character energy in the making."
+    ],
+    "6/10": [
+      "Bro, you’re stepping up for real.",
+      "You’re starting to turn heads.",
+      "That’s MVP potential right there.",
+      "You’re making an impact, keep going.",
+      "You’re starting to run the show."
+    ],
+    "7/10": [
+      "That’s chosen one vibes, no cap.",
+      "You’re on your way to legendary status.",
+      "People starting to notice, for real.",
+      "You got that icon energy.",
+      "You’re the plot twist everyone needed."
+    ],
+    "8/10": [
+      "You’re making history out here.",
+      "That’s next-level presence.",
+      "You’re the one people talk about.",
+      "You’re setting trends, not following.",
+      "That’s a myth in the making."
+    ],
+    "9/10": [
+      "Bro, you’re the main event now.",
+      "That’s top dog status, respect.",
+      "You’re leading the pack, for real.",
+      "Everyone looking up to you now.",
+      "That’s living legend material."
+    ],
+    "10/10": [
+      "GOAT status, no question.",
+      "You’re the blueprint, for real.",
+      "That’s icon level, nothing higher.",
+      "You’re the final boss, no cap.",
+      "Everyone wants to be you, bro."
+    ]
+  },
+  "3": {
+    "1/10": [
+      "Bro, that’s a weak mission, not gonna lie.",
+      "You really just trying to get by, huh?",
+      "That’s the bare minimum, for real.",
+      "Low effort, but at least you honest.",
+      "That’s a struggle goal, respect the grind."
+    ],
+    "2/10": [
+      "That’s barely a mission, but okay.",
+      "You just trying to survive out here.",
+      "Not much ambition, but you do you.",
+      "That’s a simple plan, can’t knock it.",
+      "You just staying out the way, I get it."
+    ],
+    "3/10": [
+      "That’s a safe play, respect.",
+      "You got some goals, keep pushing.",
+      "Trying to level up, I see you.",
+      "You’re moving forward, even if slow.",
+      "That’s a decent mission, keep grinding."
+    ],
+    "4/10": [
+      "You’re starting to aim higher, respect.",
+      "That’s a step up, for real.",
+      "You got some drive, I like it.",
+      "You’re setting your sights up, keep going.",
+      "That’s the start of something bigger."
+    ],
+    "5/10": [
+      "Now that’s a mission with some heat!",
+      "You’re making moves, I see the hustle.",
+      "That’s how you shake things up.",
+      "You’re out here proving people wrong.",
+      "That’s the energy we need!"
+    ],
+    "6/10": [
+      "Bro, you’re changing the game.",
+      "That’s a mission worth talking about.",
+      "You’re leading the squad, respect.",
+      "Making history out here, for real.",
+      "That’s legacy-level ambition."
+    ],
+    "7/10": [
+      "That’s a world-changer move, no cap.",
+      "You’re rewriting the rules, I see you.",
+      "Legend status mission, for real.",
+      "You’re inspiring the next wave.",
+      "That’s how you leave a mark."
+    ],
+    "8/10": [
+      "You’re out here breaking records.",
+      "That’s a revolutionary mission.",
+      "You’re setting a new standard.",
+      "That’s how you start a new era.",
+      "You’re changing the whole game."
+    ],
+    "9/10": [
+      "That’s a cosmic-level mission, bro.",
+      "You’re literally rewriting destiny.",
+      "You’re on some mythic journey.",
+      "That’s the stuff of legends.",
+      "You’re setting the ultimate standard."
+    ],
+    "10/10": [
+      "That’s a god-tier mission, no debate.",
+      "You’re out here shaping the universe.",
+      "Ultimate legacy, nothing higher.",
+      "You’re the story everyone will tell.",
+      "That’s the final boss of missions!"
+    ]
+  },
+  "4": {
+    "1/10": [
+      "Bro, that’s a rough squad, not gonna lie.",
+      "You really out here solo, huh?",
+      "That’s the lowest backup possible.",
+      "Man, you got nobody on your side?",
+      "That’s a struggle team, for real."
+    ],
+    "2/10": [
+      "That’s barely a crew, but it counts.",
+      "You got some questionable allies, respect.",
+      "Not the strongest squad, but you make it work.",
+      "At least you got someone, I guess.",
+      "That’s a weird mix, but it’s yours."
+    ],
+    "3/10": [
+      "That’s a basic squad, but loyal.",
+      "You got some real ones, even if few.",
+      "Small circle, but strong bond.",
+      "You know who’s got your back, respect.",
+      "Not a big crew, but solid."
+    ],
+    "4/10": [
+      "You got a chill team, I see you.",
+      "Your squad’s got potential.",
+      "That’s a good mix, for real.",
+      "You’re building up your crew.",
+      "That’s a solid foundation."
+    ],
+    "5/10": [
+      "That’s a hype squad, for real.",
+      "You got some real energy in your corner.",
+      "Your crew’s got your back, no doubt.",
+      "That’s a ride-or-die team.",
+      "Squad goals, for sure."
+    ],
+    "6/10": [
+      "That’s an all-star lineup!",
+      "Your team is stacked, no lie.",
+      "You’re rolling with the best.",
+      "That’s a legendary crew.",
+      "You got champions on your side."
+    ],
+    "7/10": [
+      "That’s a superhero squad, for real.",
+      "You’re rolling with legends.",
+      "Your crew is untouchable.",
+      "That’s an elite alliance.",
+      "You got the dream team, no cap."
+    ],
+    "8/10": [
+      "That’s a mythic squad, respect.",
+      "You’re rolling with the greats.",
+      "Your allies are next-level.",
+      "That’s a god-tier team.",
+      "You got the legends on speed dial."
+    ],
+    "9/10": [
+      "Bro, that’s the ultimate crew.",
+      "Your squad is unstoppable.",
+      "You got the universe on your side.",
+      "That’s a cosmic alliance.",
+      "Nobody can touch your team."
+    ],
+    "10/10": [
+      "That’s the squad of all squads!",
+      "You’re rolling with the forces of nature.",
+      "Your team is literally unbeatable.",
+      "That’s the definition of ultimate backup.",
+      "You got the whole world behind you!"
+    ]
+  },
+  "5": {
+    "1/10": [
+      "Bro, that’s a rough trait to have.",
+      "You really out here with nothing special?",
+      "That’s basic energy, for real.",
+      "Not much to work with, huh?",
+      "That’s tough, gotta find your spark."
+    ],
+    "2/10": [
+      "That’s barely a personality, bro.",
+      "You just blending in everywhere.",
+      "Not much stands out, but you’re you.",
+      "That’s a quiet vibe, can’t lie.",
+      "You’re flying under the radar for real."
+    ],
+    "3/10": [
+      "You got some chill, I see you.",
+      "Low-key but steady, respect.",
+      "Not loud, but you’re present.",
+      "That’s a subtle flex.",
+      "You’re keeping it cool, nothing wrong with that."
+    ],
+    "4/10": [
+      "You got some wit, I like it.",
+      "That’s a solid trait, for real.",
+      "You’re starting to show out.",
+      "People starting to notice, keep it up.",
+      "That’s a good look, bro."
+    ],
+    "5/10": [
+      "That’s a standout quality, respect.",
+      "You got some real swag.",
+      "People know you for that.",
+      "That’s a signature move.",
+      "You’re making your mark, for real."
+    ],
+    "6/10": [
+      "You’re on another level now.",
+      "That’s main character energy.",
+      "You’re setting trends, not following.",
+      "People wanna be like you.",
+      "That’s a flex, no cap."
+    ],
+    "7/10": [
+      "You’re glowing up for real.",
+      "That’s a legendary trait.",
+      "People can’t ignore you now.",
+      "You’re the vibe everyone wants.",
+      "That’s greatness in the making."
+    ],
+    "8/10": [
+      "That’s a mythic quality, respect.",
+      "You’re on a different wavelength.",
+      "That’s next-level charisma.",
+      "People feel your presence instantly.",
+      "That’s a rare gift, for real."
+    ],
+    "9/10": [
+      "That’s god-tier, no question.",
+      "You’re the standard everyone looks up to.",
+      "That’s a legendary flex.",
+      "People talk about you everywhere.",
+      "You’re the blueprint, for real."
+    ],
+    "10/10": [
+      "That’s perfection, can’t top that.",
+      "You’re the definition of iconic.",
+      "Everyone wants what you got.",
+      "That’s the ultimate trait, no debate.",
+      "You’re the legend, plain and simple."
+    ]
+  },
+  "6": {
+    "1/10": [
+      "Bro, that’s the weakest weapon ever.",
+      "You really out here unarmed, huh?",
+      "That’s a struggle loadout, for real.",
+      "Not much firepower, gotta improvise.",
+      "That’s a tough way to fight, respect."
+    ],
+    "2/10": [
+      "That’s barely a weapon, but it works.",
+      "You making it work with what you got.",
+      "Not much, but you’re scrappy.",
+      "You fighting with the basics, respect.",
+      "That’s a creative choice, gotta admit."
+    ],
+    "3/10": [
+      "That’s a starter pack weapon.",
+      "You got some tricks up your sleeve.",
+      "Not bad, but could be better.",
+      "You’re making do, I see you.",
+      "That’s an underdog’s arsenal."
+    ],
+    "4/10": [
+      "That’s a solid weapon, for real.",
+      "You got some firepower now.",
+      "You’re starting to pack a punch.",
+      "That’s a reliable choice.",
+      "You’re stepping up your game."
+    ],
+    "5/10": [
+      "That’s a dangerous combo, respect.",
+      "You got some serious tools now.",
+      "People gotta watch out for you.",
+      "That’s a flex, for real.",
+      "You’re not to be messed with."
+    ],
+    "6/10": [
+      "You got the ultimate loadout.",
+      "That’s some next-level gear.",
+      "People fear your arsenal.",
+      "You’re locked and loaded.",
+      "That’s a legendary weapon set."
+    ],
+    "7/10": [
+      "That’s a game-changer, no cap.",
+      "You’re unstoppable with that.",
+      "That’s a boss-level weapon.",
+      "You’re breaking the meta.",
+      "That’s a power move, for real."
+    ],
+    "8/10": [
+      "That’s a mythic weapon, respect.",
+      "You’re swinging with the legends.",
+      "That’s an artifact, not just a weapon.",
+      "People tell stories about that.",
+      "You’re on a different level now."
+    ],
+    "9/10": [
+      "That’s reality-bending, no question.",
+      "You’re armed like a god.",
+      "That’s a weapon of legends.",
+      "Nobody stands a chance against you.",
+      "You’re rewriting the rules."
+    ],
+    "10/10": [
+      "That’s the ultimate weapon, no debate.",
+      "You’re unstoppable, plain and simple.",
+      "That’s game over for anyone else.",
+      "You got the cheat codes, for real.",
+      "That’s the top of the top, nothing higher."
+    ]
+  },
+  "7": {
+    "1/10": [
+      "Bro, that’s not even a skill.",
+      "You really flexing that? Wild.",
+      "That’s a struggle ability, for real.",
+      "You gotta work on that one.",
+      "That’s a tough way to get by."
+    ],
+    "2/10": [
+      "That’s barely a talent, but it counts.",
+      "You making the best of what you got.",
+      "Not much, but it’s something.",
+      "That’s a unique skill, I’ll give you that.",
+      "You’re surviving with the basics."
+    ],
+    "3/10": [
+      "That’s a fun skill, respect.",
+      "You got some hidden talents.",
+      "Not bad, keep working on it.",
+      "You’re on your way up.",
+      "That’s a solid trick to have."
+    ],
+    "4/10": [
+      "That’s a real ability, for sure.",
+      "You’re getting good at this.",
+      "People starting to notice, no cap.",
+      "That’s a handy skill to have.",
+      "You’re stepping up your game."
+    ],
+    "5/10": [
+      "That’s a clutch move, respect.",
+      "You got some real power now.",
+      "People wish they had that.",
+      "That’s a flex, for real.",
+      "You’re making waves with that one."
+    ],
+    "6/10": [
+      "That’s a next-level skill.",
+      "You’re breaking boundaries, bro.",
+      "People can’t keep up with you.",
+      "That’s a game-changer, no doubt.",
+      "You’re leading the pack."
+    ],
+    "7/10": [
+      "That’s a legendary ability.",
+      "You’re on another plane now.",
+      "People can’t even comprehend that.",
+      "That’s a rare gift, for real.",
+      "You’re setting the bar high."
+    ],
+    "8/10": [
+      "That’s mythic power, no question.",
+      "You’re rewriting the rules.",
+      "People dream of that skill.",
+      "That’s a once-in-a-generation talent.",
+      "You’re on a cosmic level."
+    ],
+    "9/10": [
+      "That’s god-tier, no debate.",
+      "You’re unstoppable with that.",
+      "Nobody can match your ability.",
+      "That’s a legendary flex.",
+      "You’re the standard now."
+    ],
+    "10/10": [
+      "That’s the ultimate ability.",
+      "You’re on a whole different level.",
+      "Nobody can touch you now.",
+      "That’s perfection, plain and simple.",
+      "You’re the legend everyone talks about."
+    ]
+  },
+  "8": {
+    "1/10": [
+      "Bro, that’s a tough weakness to have.",
+      "You really gotta work on that.",
+      "That’s holding you back, for real.",
+      "You’re struggling with that one.",
+      "That’s a rough spot, no lie."
+    ],
+    "2/10": [
+      "That’s a common struggle, you’re not alone.",
+      "You’ll get through it, keep trying.",
+      "Everyone’s got something, don’t stress.",
+      "That’s a minor setback, you got this.",
+      "You can bounce back from that."
+    ],
+    "3/10": [
+      "That’s a challenge, but you’re working on it.",
+      "You’re learning from your mistakes.",
+      "That’s just part of the journey.",
+      "You’re growing every day.",
+      "That’s a lesson in progress."
+    ],
+    "4/10": [
+      "You’re aware of it, that’s half the battle.",
+      "You’re turning weakness into strength.",
+      "That’s motivation to get better.",
+      "You’re not letting it stop you.",
+      "That’s how you level up."
+    ],
+    "5/10": [
+      "That’s a real struggle, but you own it.",
+      "You’re stronger for facing it.",
+      "That’s what makes you unique.",
+      "You’re turning flaws into features.",
+      "That’s character development, for real."
+    ],
+    "6/10": [
+      "You’re rising above your limits.",
+      "That’s just fuel for your fire.",
+      "You’re unstoppable despite it.",
+      "That’s a badge of honor now.",
+      "You’re proving everyone wrong."
+    ],
+    "7/10": [
+      "You’re conquering your demons.",
+      "That’s next-level growth.",
+      "You’re unstoppable, even with that.",
+      "That’s a power move, for real.",
+      "You’re rewriting your own story."
+    ],
+    "8/10": [
+      "That’s a legendary comeback.",
+      "You’re turning pain into power.",
+      "That’s mythic resilience.",
+      "You’re inspiring with your strength.",
+      "That’s how legends are made."
+    ],
+    "9/10": [
+      "That’s god-tier perseverance.",
+      "You’re the definition of unbreakable.",
+      "Nobody can hold you back.",
+      "That’s a flex, for real.",
+      "You’re a force of nature."
+    ],
+    "10/10": [
+      "No weakness? That’s perfection.",
+      "You’re flawless, no debate.",
+      "That’s the dream, for real.",
+      "You’re on another level.",
+      "That’s ultimate boss status."
+    ]
+  },
+  "9": {
+    "1/10": [
+      "Bro, that’s a struggle threat.",
+      "You really battling the basics, huh?",
+      "That’s a tough enemy, no cap.",
+      "You’re fighting the small stuff, respect.",
+      "That’s a daily struggle, I feel you."
+    ],
+    "2/10": [
+      "That’s a minor threat, but it adds up.",
+      "You’re dodging the little things.",
+      "That’s annoying, but you manage.",
+      "You’re handling it, no problem.",
+      "You got this, just keep moving."
+    ],
+    "3/10": [
+      "That’s a real challenge, but you’re built for it.",
+      "You’re facing it head-on, respect.",
+      "That’s a test, but you’ll pass.",
+      "You’re not backing down, I see you.",
+      "That’s just another hurdle."
+    ],
+    "4/10": [
+      "You’re taking on bigger threats now.",
+      "That’s a serious challenge, respect.",
+      "You’re stepping up to the plate.",
+      "That’s how you get stronger.",
+      "You’re leveling up with every fight."
+    ],
+    "5/10": [
+      "That’s a real enemy, but you’re ready.",
+      "You’re facing the heat, no fear.",
+      "That’s a worthy opponent.",
+      "You’re built for these battles.",
+      "That’s how you earn respect."
+    ],
+    "6/10": [
+      "You’re facing the big leagues now.",
+      "That’s a top-tier threat.",
+      "You’re not phased by anything.",
+      "That’s boss battle energy.",
+      "You’re unstoppable, no cap."
+    ],
+    "7/10": [
+      "You’re up against the universe now.",
+      "That’s cosmic-level danger.",
+      "You’re challenging fate itself.",
+      "That’s a mythic struggle.",
+      "You’re rewriting the rules."
+    ],
+    "8/10": [
+      "That’s a legendary threat, respect.",
+      "You’re staring down the impossible.",
+      "That’s next-level danger.",
+      "You’re fearless, for real.",
+      "That’s a hero’s test."
+    ],
+    "9/10": [
+      "That’s god-tier adversity.",
+      "You’re unbreakable in the face of anything.",
+      "Nobody else could handle that.",
+      "That’s legendary courage.",
+      "You’re the last one standing."
+    ],
+    "10/10": [
+      "Nothing can touch you now.",
+      "You’re untouchable, plain and simple.",
+      "That’s invincible energy.",
+      "You’re the final boss, no debate.",
+      "You’re beyond all threats."
+    ]
+  },
+  "10": {
+    "1/10": [
+      "Bro, that’s a wild secret.",
+      "You really hiding that? Crazy.",
+      "That’s unexpected, not gonna lie.",
+      "You kept that on lock, respect.",
+      "That’s a plot twist, for real."
+    ],
+    "2/10": [
+      "That’s a funny thing to keep hidden.",
+      "You got some quirky secrets, huh?",
+      "That’s low-key hilarious.",
+      "You’re full of surprises.",
+      "That’s a unique secret, respect."
+    ],
+    "3/10": [
+      "That’s a cool thing to keep to yourself.",
+      "You got layers, I see you.",
+      "That’s a solid secret, for real.",
+      "You’re more interesting than you let on.",
+      "That’s a flex, no doubt."
+    ],
+    "4/10": [
+      "That’s a legendary backstory.",
+      "You got some history, respect.",
+      "That’s a power move, keeping that hidden.",
+      "You’re mysterious, I like it.",
+      "That’s a story worth telling someday."
+    ],
+    "5/10": [
+      "That’s a secret only legends have.",
+      "You’re keeping the best for last.",
+      "That’s a top-tier mystery.",
+      "You’re playing the long game.",
+      "That’s how you keep people guessing."
+    ],
+    "6/10": [
+      "That’s a next-level secret.",
+      "You’re holding onto some real power.",
+      "That’s a reveal for the ages.",
+      "You’re saving that for the right moment.",
+      "That’s a game-changer, for real."
+    ],
+    "7/10": [
+      "That’s a mythic secret, respect.",
+      "You’re the plot twist nobody saw coming.",
+      "That’s a legend in disguise.",
+      "You’re the ace up your own sleeve.",
+      "That’s a story for the history books."
+    ],
+    "8/10": [
+      "That’s a cosmic-level secret.",
+      "You’re holding the keys to the universe.",
+      "That’s a secret only the greats have.",
+      "You’re the keeper of legends.",
+      "That’s a once-in-a-lifetime reveal."
+    ],
+    "9/10": [
+      "That’s god-tier mystery.",
+      "You’re the enigma everyone talks about.",
+      "That’s the stuff of legends.",
+      "You’re the final chapter nobody reads.",
+      "That’s a secret for the ages."
+    ],
+    "10/10": [
+      "That’s the ultimate secret, no debate.",
+      "You’re the legend behind the legend.",
+      "That’s perfection in mystery form.",
+      "You’re the story everyone wants to know.",
+      "That’s the top of the top, nothing higher."
+    ]
+  }
+}
