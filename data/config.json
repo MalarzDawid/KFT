@@ -1,0 +1,172 @@
+{
+    "prompt": "Star Wars",
+    "music": "music.mp3",
+    "bg_img": "bg.png",
+    "bg_color": [
+        60,
+        30,
+        30
+    ],
+    "questions": [
+        {
+            "text": "Skąd pochodzisz?",
+            "num_answers": 2,
+            "answers": [
+                "Tatooine",
+                "Naboo",
+                "Coruscant",
+                "Kashyyyk",
+                "Dantooine",
+                "Alderaan",
+                "Jedha",
+                "Felucia",
+                "Hoth",
+                "Ilum"
+            ]
+        },
+        {
+            "text": "Kim jesteś?",
+            "num_answers": 4,
+            "answers": [
+                "Android",
+                "Padawan",
+                "Stormtrooper",
+                "Seeker",
+                "Rebel",
+                "Sith Lord",
+                "Jedi Knight",
+                "Droid",
+                "Clone Trooper",
+                "Emperor"
+            ]
+        },
+        {
+            "text": "Jaka jest twoja misja?",
+            "num_answers": 5,
+            "answers": [
+                "Pilnowanie porządku",
+                "Ochrona Rebelii",
+                "Zdobycie mocy",
+                "Podbój Galaktyki",
+                "Ochrona szpiegów",
+                "Zniszczenie Jedi",
+                "Ochrona Rady",
+                "Utrzymanie pokoju",
+                "Zgromadzenie tajnych informacji",
+                "Zniszczenie Mocy"
+            ]
+        },
+        {
+            "text": "Kogo masz za sprzymierzeńca?",
+            "num_answers": 7,
+            "answers": [
+                "Imperial Officer",
+                "Imperial Navy",
+                "Rebel Ally",
+                "Jedi",
+                "Sith Apprentice",
+                "Bounty Hunter",
+                "Droid Commander",
+                "Clone Commander",
+                "Resistance Fighter",
+                "Galactic Senator"
+            ]
+        },
+        {
+            "text": "Twoja najbardziej charakterystyczna cecha?",
+            "num_answers": 10,
+            "answers": [
+                "Nieokazujący emocji",
+                "Złośliwy",
+                "Boi się",
+                "Lojalny",
+                "Zdradliwy",
+                "Mocny",
+                "Inteligentny",
+                "Szczery",
+                "Zły",
+                "Charyzmatyczny"
+            ]
+        },
+        {
+            "text": "Jaką masz broń?",
+            "num_answers": 10,
+            "answers": [
+                "Stara blastera",
+                "Miecz świetlny",
+                "Karabin",
+                "Droid z bronią",
+                "Pistolet laserowy",
+                "Miecz energetyczny",
+                "Saturn",
+                "Tłumik",
+                "Lukastrzał",
+                "Lance"
+            ]
+        },
+        {
+            "text": "Jaką specjalną umiejętność posiadasz?",
+            "num_answers": 10,
+            "answers": [
+                "Cichy strzał",
+                "Mistrz miecza",
+                "Szybkie myślenie",
+                "Zdolność do kamuflażu",
+                "Moc manipulacji",
+                "Mistrz walki fizycznej",
+                "Szybkie odnajdywanie słabości",
+                "Przebiegłość",
+                "Znajomość sztuk Sabaka",
+                "Umiejętność przemytu"
+            ]
+        },
+        {
+            "text": "Twoja największa słabość?",
+            "num_answers": 2,
+            "answers": [
+                "Niepewność",
+                "Brak zaufania",
+                "Słabe zdrowie",
+                "Strach przed Mocą",
+                "Ty czy Ty",
+                "Brak doświadczenia",
+                "Niewidomy",
+                "Pasja za słaba",
+                "Niecierpliwość",
+                "Brak taktyki"
+            ]
+        },
+        {
+            "text": "Co ci zagraża?",
+            "num_answers": 3,
+            "answers": [
+                "Imperialni agenci",
+                "Zdrada",
+                "Utrapienie od Mocy",
+                "Złe warunki pogodowe",
+                "Poison",
+                "Przeciwnik zbyt silny",
+                "Tajemniczy wróg",
+                "Zamieszanie",
+                "Słaba obrona",
+                "Zdrada przez sprzymierzeńca"
+            ]
+        },
+        {
+            "text": "Jaką tajemnicę skrywasz przed innymi?",
+            "num_answers": 4,
+            "answers": [
+                "Moja prawdziwa tożsamość",
+                "Mój plan zniszczenia",
+                "Ukryte moce",
+                "Tajemniczy cel",
+                "Przemytnicza przeszłość",
+                "Sekretna misja",
+                "Ukrywana lojalność",
+                "Oszustwo na wysokim szczeblu",
+                "Ukrywanie Mocy",
+                "Korupcja w Narodzie"
+            ]
+        }
+    ]
+}

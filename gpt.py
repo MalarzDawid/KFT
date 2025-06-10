@@ -1,8 +1,8 @@
 from openai import OpenAI
-from pydantic import BaseModel, Field, ConfigDict
+from pydantic import BaseModel, ConfigDict
 import json
 
-client = OpenAI(api_key="")
+client = OpenAI(api_key="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")
 
 class AnswersModel(BaseModel):
     model_config = ConfigDict(extra="forbid")
