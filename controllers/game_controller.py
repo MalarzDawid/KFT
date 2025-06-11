@@ -87,11 +87,11 @@ class GameController:
                     self.game_state.set_state(GameState.SPINNING)
         elif self.game_state.state == GameState.WAITING:
             if self.game_state.update_timer(dt):
-                self.game_state.increment_draw()
                 if self.game_state.state != GameState.RESULTS:
                     self.generate_new_wheel()
                     self.wheel.spin()
                     self.game_state.set_state(GameState.SPINNING)
+                self.game_state.increment_draw()
         if self.game_state.state == GameState.SPINNING:
             self.view.render_spinning(self.wheel, self.game_state.current_draw)
         elif self.game_state.state == GameState.WAITING:

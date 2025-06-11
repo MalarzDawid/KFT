@@ -158,104 +158,135 @@ class ModernColorPicker:
                 pygame.draw.line(screen, TEXT_COLOR, (check_x + 5, check_y + 5), (check_x + 12, check_y - 7), 2)
 
 class ConfigView:
-    """Handles rendering of the configuration UI.
-
-    This class is responsible for rendering the configuration interface.
-    """
+    """Handles rendering of the configuration UI."""
     def __init__(self, screen, config):
-        """Initialize the ConfigView.
-
-        Args:
-            screen: Pygame surface for rendering.
-            config (dict): Configuration data.
-        """
         self.screen = screen
         self.config = config
-        self.font = pygame.font.SysFont("Roboto", 26)
-        self.small_font = pygame.font.SysFont("Roboto", 20)
-        self.tiny_font = pygame.font.SysFont("Roboto", 16)
         self.screen_width, self.screen_height = WIDTH, HEIGHT
-        self.prompt_box = ModernInputBox(CONFIG_PROMPT_X, CONFIG_PROMPT_Y, CONFIG_INPUT_WIDTH, CONFIG_INPUT_HEIGHT,
-                                         config.get("prompt", "Star Wars"), label="Uniwersum:", placeholder="Podaj nazwę uniwersum...")
-        self.color_picker = ModernColorPicker(800, CONFIG_COLOR_PICKER_Y, [
-            (30, 30, 60), (60, 30, 60), (30, 60, 30), (60, 30, 30), (30, 30, 30), (60, 60, 30)
-        ], label="Kolor tła:")
-        self.music_box = ModernInputBox(800, CONFIG_MUSIC_Y, 360, CONFIG_INPUT_HEIGHT,
-                                        config.get("music", "music.mp3"), label="Plik muzyczny:", placeholder="Podaj nazwę pliku...")
-        self.bg_box = ModernInputBox(800, CONFIG_BG_IMAGE_Y, 360, CONFIG_INPUT_HEIGHT,
-                                     config.get("bg_img", "bg.png"), label="Plik tła:", placeholder="Podaj nazwę pliku...")
-        self.answer_inputs = [
-            ModernInputBox(655, 150 + i * 45, CONFIG_NUM_INPUT_WIDTH, CONFIG_NUM_INPUT_HEIGHT,
-                           str(config["questions"][i]["num_answers"] if i < len(config["questions"]) else 5), numeric=True)
-            for i in range(len(QUESTIONS))
-        ]
-        self.save_button = (CONFIG_BUTTON_X, CONFIG_BUTTON_Y, 180, 50, "Zapisz i Generuj", CONFIG_BUTTON_COLOR, CONFIG_BUTTON_HOVER_COLOR)
-        self.back_button = (CONFIG_BUTTON_X + 30, CONFIG_BACK_BUTTON_Y, 150, 50, "Powrót", BACK_BUTTON_COLOR, BACK_BUTTON_HOVER_COLOR)
+        self.fonts = self._load_fonts()
+        self._init_controls()
         logger.info("ConfigView initialized")
 
+    def _load_fonts(self):
+        return {
+            'title': pygame.font.SysFont("Roboto", 26),
+            'small': pygame.font.SysFont("Roboto", 20),
+            'tiny': pygame.font.SysFont("Roboto", 16),
+            'input': pygame.font.SysFont("Roboto", CONFIG_FONT_SIZE),
+            'label': pygame.font.SysFont("Roboto", LABEL_FONT_SIZE),
+        }
+
+    def _init_controls(self):
+        cfg = self.config
+        # Input boxes
+        self.prompt_box = ModernInputBox(
+            CONFIG_PROMPT_X, CONFIG_PROMPT_Y,
+            CONFIG_INPUT_WIDTH, CONFIG_INPUT_HEIGHT,
+            cfg.get("prompt", "Star Wars"), label="Uniwersum:", placeholder="Podaj nazwę uniwersum..."
+        )
+        self.music_box = ModernInputBox(
+            800, CONFIG_MUSIC_Y, 360, CONFIG_INPUT_HEIGHT,
+            cfg.get("music", "music.mp3"), label="Plik muzyczny:", placeholder="Podaj nazwę pliku..."
+        )
+        self.bg_box = ModernInputBox(
+            800, CONFIG_BG_IMAGE_Y, 360, CONFIG_INPUT_HEIGHT,
+            cfg.get("bg_img", "bg.png"), label="Plik tła:", placeholder="Podaj nazwę pliku..."
+        )
+        # Number of answers per question
+        self.answer_inputs = []
+        for i, _ in enumerate(QUESTIONS):
+            y = 150 + i * 45
+            num = (cfg['questions'][i]['num_answers'] if i < len(cfg.get('questions', [])) else 5)
+            box = ModernInputBox(
+                655, y, CONFIG_NUM_INPUT_WIDTH, CONFIG_NUM_INPUT_HEIGHT,
+                str(num), numeric=True
+            )
+            self.answer_inputs.append(box)
+        # Color picker
+        colors = [(30, 30, 60), (60, 30, 60), (30, 60, 30), (60, 30, 30), (30, 30, 30), (60, 60, 30)]
+        self.color_picker = ModernColorPicker(800, CONFIG_COLOR_PICKER_Y, colors, label="Kolor tła:")
+        # Buttons
+        self.save_button = self._make_button(CONFIG_BUTTON_X, CONFIG_BUTTON_Y, 180, 50,
+                                             "Zapisz i Generuj", CONFIG_BUTTON_COLOR, CONFIG_BUTTON_HOVER_COLOR)
+        self.back_button = self._make_button(CONFIG_BUTTON_X + 30, CONFIG_BACK_BUTTON_Y, 150, 50,
+                                             "Powrót", BACK_BUTTON_COLOR, BACK_BUTTON_HOVER_COLOR)
+
+    def _make_button(self, x, y, w, h, text, color, hover_color):
+        return {'rect': pygame.Rect(x, y, w, h), 'text': text,
+                'color': color, 'hover': hover_color}
+
     def render(self):
-        """Render the configuration screen with gradient background and enhanced buttons."""
+        self._draw_background()
+        self._draw_main_panel()
+        self._draw_questions_panel()
+        self._draw_inputs()
+        self._draw_buttons()
+        self._draw_prompt_preview()
+
+    def _draw_background(self):
         draw_gradient_background(self.screen, self.screen_height, CONFIG_BG_COLOR, (50, 50, 100))
-        # Main panel
-        main_panel = pygame.Rect(CONFIG_PANEL_X, CONFIG_PANEL_Y, CONFIG_PANEL_WIDTH, CONFIG_PANEL_HEIGHT)
-        pygame.draw.rect(self.screen, CONFIG_PANEL_COLOR, main_panel, border_radius=BORDER_RADIUS)
-        pygame.draw.rect(self.screen, (60, 60, 80), main_panel, BORDER_THICKNESS, border_radius=BORDER_RADIUS)
 
-        # Title
-        render_text(self.font, "KONFIGURACJA", TEXT_COLOR, self.screen_width / 2 , 10, self.screen, center=True)
+    def _draw_main_panel(self):
+        panel = pygame.Rect(CONFIG_PANEL_X, CONFIG_PANEL_Y,
+                            CONFIG_PANEL_WIDTH, CONFIG_PANEL_HEIGHT)
+        pygame.draw.rect(self.screen, CONFIG_PANEL_COLOR, panel, border_radius=BORDER_RADIUS)
+        pygame.draw.rect(self.screen, (60, 60, 80), panel, BORDER_THICKNESS, border_radius=BORDER_RADIUS)
+        render_text(self.fonts['title'], "KONFIGURACJA", TEXT_COLOR,
+                    self.screen_width / 2, 10, self.screen, center=True)
 
-        # Questions panel
-        questions_rect = pygame.Rect(CONFIG_QUESTIONS_RECT_X, CONFIG_QUESTIONS_RECT_Y + 10, CONFIG_QUESTIONS_RECT_WIDTH, CONFIG_QUESTIONS_RECT_HEIGHT)
-        pygame.draw.rect(self.screen, (45, 45, 65), questions_rect, border_radius=BORDER_RADIUS)
-        render_text(self.small_font, "Pytania i liczba odpowiedzi", LABEL_COLOR, questions_rect.centerx, CONFIG_QUESTIONS_RECT_Y + PADDING + 4, self.screen, center=True)
+    def _draw_questions_panel(self):
+        rect = pygame.Rect(CONFIG_QUESTIONS_RECT_X,
+                           CONFIG_QUESTIONS_RECT_Y + 10,
+                           CONFIG_QUESTIONS_RECT_WIDTH,
+                           CONFIG_QUESTIONS_RECT_HEIGHT)
+        pygame.draw.rect(self.screen, (45, 45, 65), rect, border_radius=BORDER_RADIUS)
+        render_text(self.fonts['small'], "Pytania i liczba odpowiedzi", LABEL_COLOR,
+                    rect.centerx, CONFIG_QUESTIONS_RECT_Y + PADDING + 4,
+                    self.screen, center=True)
         for i, text in enumerate(QUESTIONS):
             y = 160 + i * 45
             circle_pos = (95, y + 12)
             pygame.draw.circle(self.screen, CONFIG_ACCENT_COLOR, circle_pos, 15)
-            render_text(self.small_font, f"{i+1}", TEXT_COLOR, circle_pos[0], circle_pos[1] - 6, self.screen, center=True)
-            render_text(self.small_font, f"{text}", TEXT_COLOR, 120, y + 6, self.screen)
+            render_text(self.fonts['small'], f"{i+1}", TEXT_COLOR,
+                        circle_pos[0], circle_pos[1] - 6, self.screen, center=True)
+            render_text(self.fonts['small'], text, TEXT_COLOR, 120, y + 6, self.screen)
             self.answer_inputs[i].rect.y = y
             self.answer_inputs[i].draw(self.screen)
 
-        # Input boxes and color picker
+    def _draw_inputs(self):
         self.prompt_box.draw(self.screen)
         self.color_picker.draw(self.screen)
         self.music_box.draw(self.screen)
         self.bg_box.draw(self.screen)
 
-        # Buttons with shadow and hover effect
-        mouse_pos = pygame.mouse.get_pos()
-        save_rect = pygame.Rect(*self.save_button[:4])
-        back_rect = pygame.Rect(*self.back_button[:4])
-        # Draw shadow for save button
-        shadow_save_rect = save_rect.move(4, 4)
-        pygame.draw.rect(self.screen, (40, 40, 50), shadow_save_rect, border_radius=BORDER_RADIUS)
-        # Draw save button with hover
-        save_color = self.save_button[6] if save_rect.collidepoint(mouse_pos) else self.save_button[5]
-        draw_button(self.screen, save_rect, save_color, self.save_button[4], self.font)
-        # Draw shadow for back button
-        shadow_back_rect = back_rect.move(4, 4)
-        pygame.draw.rect(self.screen, (40, 40, 50), shadow_back_rect, border_radius=BORDER_RADIUS)
-        # Draw back button with hover
-        back_color = self.back_button[6] if back_rect.collidepoint(mouse_pos) else self.back_button[5]
-        draw_button(self.screen, back_rect, back_color, self.back_button[4], self.font)
+    def _draw_buttons(self):
+        mouse = pygame.mouse.get_pos()
+        for btn in (self.save_button, self.back_button):
+            shadow = btn['rect'].move(4, 4)
+            pygame.draw.rect(self.screen, (40, 40, 50), shadow, border_radius=BORDER_RADIUS)
+            color = btn['hover'] if btn['rect'].collidepoint(mouse) else btn['color']
+            draw_button(self.screen, btn['rect'], color, btn['text'], self.fonts['title'])
 
-        # AI Prompt preview
-        ai_prompt = f'Jesteś twórcą wideo w stylu "Spin the wheel". Odpowiadasz na poniższe pytania, korzystając wyłącznie z uniwersum {self.prompt_box.text}. Odpowiadaj tylko w formacie JSON, bez żadnych wyjaśnień, opisów czy dodatkowych komentarzy.'
-        prompt_panel = pygame.Rect(40, 660, 720, 90)
-        pygame.draw.rect(self.screen, (45, 45, 65), prompt_panel, border_radius=BORDER_RADIUS)
-        render_text(self.small_font, "Podgląd zapytania AI", LABEL_COLOR, prompt_panel.x + 20, prompt_panel.y + 10, self.screen)
-        words = ai_prompt.split()
-        lines = []
-        current_line = ""
+    def _draw_prompt_preview(self):
+        prompt = (f"Jesteś twórcą wideo w stylu 'Spin the wheel'. "
+                  f"Odpowiadasz na poniższe pytania, korzystając wyłącznie z uniwersum {self.prompt_box.text}. "
+                  "Odpowiadaj tylko w formacie JSON, bez żadnych wyjaśnień...")
+        panel = pygame.Rect(40, 660, 720, 90)
+        pygame.draw.rect(self.screen, (45, 45, 65), panel, border_radius=BORDER_RADIUS)
+        render_text(self.fonts['small'], "Podgląd zapytania AI", LABEL_COLOR,
+                    panel.x + 20, panel.y + 10, self.screen)
+        self._render_multiline(prompt, panel.x + 20, panel.y + 35, self.fonts['tiny'], LABEL_COLOR, max_width=650)
+
+    def _render_multiline(self, text, x, y, font, color, max_width):
+        words = text.split()
+        line = ''
         for word in words:
-            test_line = (current_line + " " + word).strip()
-            if self.tiny_font.size(test_line)[0] < 650:
-                current_line = test_line
+            test = (line + ' ' + word).strip()
+            if font.size(test)[0] < max_width:
+                line = test
             else:
-                lines.append(current_line)
-                current_line = word
-        if current_line:
-            lines.append(current_line)
-        for i, line in enumerate(lines):
-            render_text(self.tiny_font, line, LABEL_COLOR, prompt_panel.x + 20, prompt_panel.y + 35 + i * 20, self.screen)
+                render_text(font, line, color, x, y, self.screen)
+                y += font.get_linesize()
+                line = word
+        if line:
+            render_text(font, line, color, x, y, self.screen)
