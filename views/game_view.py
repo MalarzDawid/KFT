@@ -1,6 +1,7 @@
+from pathlib import Path
+
 import pygame
 import math
-from pathlib import Path
 import logging
 from constants import (
     WIDTH, HEIGHT, CENTER, WHEEL_RADIUS, SEGMENT_COLORS, FONT_SIZE, RESPONSE_FONT_SCALE,
@@ -16,8 +17,18 @@ from utils import render_text, draw_button, wrap_text
 logger = logging.getLogger(__name__)
 
 class GameView:
-    """Handles rendering of the game UI."""
+    """Handles rendering of the game UI.
+
+    This class is responsible for rendering different game states.
+    """
+
     def __init__(self, screen, config):
+        """Initialize the GameView.
+
+        Args:
+            screen: Pygame surface for rendering.
+            config (dict): Configuration data.
+        """
         self.screen = screen
         self.config = config
         self.font = pygame.font.SysFont("Arial", FONT_SIZE, bold=True)
@@ -40,25 +51,42 @@ class GameView:
                 logger.error(f"Error loading background image: {e}")
 
     def render_spinning(self, wheel_model, current_draw):
-        """Render the spinning state."""
+        """Render the spinning state.
+
+        Args:
+            wheel_model: SpinWheelModel instance.
+            current_draw (int): Current draw index.
+        """
         self.render_background()
         self._draw_wheel(wheel_model)
         render_text(self.font, QUESTIONS[current_draw], (0, 0, 0), *PROGRESS_TEXT_POS, self.screen)
 
     def render_waiting(self, wheel_model, current_draw, result, can_spin):
-        """Render the waiting state."""
+        """Render the waiting state.
+
+        Args:
+            wheel_model: SpinWheelModel instance.
+            current_draw (int): Current draw index.
+            result (str): Current result.
+            can_spin (bool): Whether spinning is allowed.
+        """
         self.render_spinning(wheel_model, current_draw)
         render_text(self.font, f"Result: {result}", (0, 0, 0), WIDTH // 2, RESULT_TEXT_Y, self.screen, center=True)
         if can_spin:
             render_text(self.font, "Press SPACE or click to spin", (0, 0, 0), WIDTH // 2, INSTRUCTIONS_Y, self.screen, center=True)
 
-    def render_gif(self, gif_frames, current_frame, result, response):
-        """Render the GIF state."""
+    def render_gif(self, media_loader, result, response):
+        """Render the GIF state.
+
+        Args:
+            media_loader: MediaLoader instance.
+            result (str): Current result.
+            response (str): Current response.
+        """
         self.render_background()
-        if gif_frames and current_frame < len(gif_frames):
-            frame = gif_frames[current_frame]
-            frame_rect = frame.get_rect(center=CENTER)
-            self.screen.blit(frame, frame_rect)
+        if media_loader.current_frame_surface:
+            frame_rect = media_loader.current_frame_surface.get_rect(center=CENTER)
+            self.screen.blit(media_loader.current_frame_surface, frame_rect)
         render_text(self.font, f"Result: {result}", (0, 0, 0), WIDTH // 2, 30, self.screen, center=True)
         text_bg_rect = pygame.Rect(0, HEIGHT + RESPONSE_TEXT_Y_OFFSET, WIDTH, 80)
         s = pygame.Surface((text_bg_rect.width, text_bg_rect.height), pygame.SRCALPHA)
@@ -72,7 +100,13 @@ class GameView:
                         HEIGHT + RESPONSE_TEXT_Y_OFFSET + (i * line_height), self.screen, center=True)
 
     def render_results(self, results, responses, is_saved):
-        """Render the results state."""
+        """Render the results state.
+
+        Args:
+            results (list): List of results.
+            responses (list): List of responses.
+            is_saved (bool): Whether results are saved.
+        """
         self.render_background()
         render_text(self.font, "Final Results", (0, 0, 0), WIDTH // 2, TITLE_Y, self.screen, center=True)
         result_y = RESULT_Y_START
@@ -87,7 +121,11 @@ class GameView:
         draw_button(self.screen, save_rect, SAVE_BUTTON_COLOR if is_saved else EXIT_BUTTON_COLOR, "Zapisz wynik", self.font)
 
     def _draw_wheel(self, wheel_model):
-        """Draw the wheel based on the model."""
+        """Draw the wheel based on the model.
+
+        Args:
+            wheel_model: SpinWheelModel instance.
+        """
         for i in range(wheel_model.segment_count):
             start_angle = math.radians(wheel_model.angle + i * wheel_model.segment_angle)
             end_angle = math.radians(wheel_model.angle + (i + 1) * wheel_model.segment_angle)

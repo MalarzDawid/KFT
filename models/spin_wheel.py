@@ -14,8 +14,17 @@ pygame.mixer.init()
 SPIN_SOUND = pygame.mixer.Sound(Path(SPIN_SOUND_PATH))
 
 class SpinWheelModel:
-    """Manages the spinning wheel's logic."""
+    """Manages the spinning wheel's logic.
+
+    This class handles the physics and selection logic of the wheel.
+    """
+
     def __init__(self, segments):
+        """Initialize the SpinWheelModel.
+
+        Args:
+            segments (list): List of segment labels.
+        """
         self.segments = segments
         self.segment_count = len(segments)
         self.segment_angle = FULL_CIRCLE / self.segment_count
@@ -40,7 +49,11 @@ class SpinWheelModel:
             logger.info("Wheel spinning started")
 
     def update(self, dt):
-        """Update the wheel's rotation."""
+        """Update the wheel's rotation.
+
+        Args:
+            dt (float): Delta time in seconds.
+        """
         if self.spinning:
             self.angle += self.angular_velocity * dt
             self.angular_velocity -= self.deceleration * dt
@@ -53,7 +66,11 @@ class SpinWheelModel:
             self.angle %= FULL_CIRCLE
 
     def get_selected_segment(self):
-        """Get the selected segment."""
+        """Get the selected segment.
+
+        Returns:
+            tuple: (selected segment, index string).
+        """
         indicator_position = INDICATOR_POSITION
         adjusted_angle = (FULL_CIRCLE - self.angle % FULL_CIRCLE)
         relative_position = (adjusted_angle + indicator_position) % FULL_CIRCLE

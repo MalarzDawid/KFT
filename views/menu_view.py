@@ -2,20 +2,29 @@ import pygame
 import logging
 from constants import MENU_BG_COLOR, MENU_BUTTON_HEIGHT, TEXT_COLOR, MENU_BUTTON_SPACING, MENU_BUTTON_WIDTH, \
     SAVE_BUTTON_BORDER_COLOR, MENU_BUTTONS_OFFSET
-from utils import draw_button
+from utils import draw_button, draw_gradient_background
 
 logger = logging.getLogger(__name__)
 
 class MenuView:
-    """Handles rendering of the main menu."""
+    """Handles rendering of the main menu.
+
+    This class is responsible for rendering the menu interface.
+    """
+
     def __init__(self, screen):
+        """Initialize the MenuView.
+
+        Args:
+            screen: Pygame surface for rendering.
+        """
         self.screen = screen
         self.font = pygame.font.SysFont("Roboto", 44, bold=True)
         self.button_font = pygame.font.SysFont("Roboto", 28, bold=True)
         self.screen_width, self.screen_height = self.screen.get_size()
         self.buttons = [
-            {"label": "CONFIGURE", "action": "configure"},
-            {"label": "PLAY", "action": "play"},
+            {"label": "CONFIGURE", "action": "config", "w": MENU_BUTTON_WIDTH, "h": MENU_BUTTON_HEIGHT},
+            {"label": "PLAY", "action": "game", "w": MENU_BUTTON_WIDTH, "h": MENU_BUTTON_HEIGHT},  # Zmiana z "play" na "game"
         ]
         total_height = len(self.buttons) * MENU_BUTTON_HEIGHT + (len(self.buttons) - 1) * MENU_BUTTON_SPACING
         start_y = (self.screen_height - total_height) / 2
@@ -26,15 +35,7 @@ class MenuView:
 
     def render(self):
         """Render the menu with gradient background and hover effects."""
-        # Gradient background
-        for y in range(self.screen_height):
-            ratio = y / self.screen_height
-            color = (
-                int(MENU_BG_COLOR[0] * (1 - ratio) + 50 * ratio),
-                int(MENU_BG_COLOR[1] * (1 - ratio) + 50 * ratio),
-                int(MENU_BG_COLOR[2] * (1 - ratio) + 100 * ratio)
-            )
-            pygame.draw.line(self.screen, color, (0, y), (self.screen_width, y))
+        draw_gradient_background(self.screen, self.screen_height, MENU_BG_COLOR, (50, 50, 100))
 
         # Title
         title = self.font.render("GAME MENU", True, TEXT_COLOR)
@@ -46,26 +47,16 @@ class MenuView:
         self.hovered_button = None
         for button in self.buttons:
             rect = pygame.Rect(
-                button["pos"][0] - MENU_BUTTON_WIDTH // 2,
-                button["pos"][1] - MENU_BUTTON_HEIGHT // 2,
-                MENU_BUTTON_WIDTH,
-                MENU_BUTTON_HEIGHT
+                button["pos"][0] - button["w"] // 2,
+                button["pos"][1] - button["h"] // 2,
+                button["w"],
+                button["h"]
             )
             # Check hover
             is_hovered = rect.collidepoint(mouse_pos)
             if is_hovered:
                 self.hovered_button = button["action"]
 
-            # Button colors
-            button_color = (100, 100, 200) if is_hovered else (80, 80, 160)
-            shadow_color = (50, 50, 100)
-
-            # Draw shadow
-            shadow_rect = rect.move(4, 4)
-            draw_button(self.screen, shadow_rect, shadow_color, "", self.button_font, SAVE_BUTTON_BORDER_COLOR)
             # Draw button
-            draw_button(self.screen, rect, button_color, button["label"], self.button_font, SAVE_BUTTON_BORDER_COLOR)
-
-    def get_hovered_action(self):
-        """Return the action of the currently hovered button."""
-        return self.hovered_button
+            draw_button(self.screen, rect, (100, 100, 200), button["label"],
+                        self.button_font, border_color=SAVE_BUTTON_BORDER_COLOR)
