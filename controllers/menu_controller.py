@@ -1,5 +1,6 @@
 import pygame
 import logging
+
 from constants import MENU_BUTTON_WIDTH, MENU_BUTTON_HEIGHT
 
 logger = logging.getLogger(__name__)

@@ -3,15 +3,17 @@ import sys
 import imageio.v2 as imageio
 import random
 import logging
+
 from pathlib import Path
-from constants import (
-    WIDTH, HEIGHT, SPACE_KEY, MOUSE_LEFT_BUTTON, GIF_SCALE_FACTOR, GIF_DISPLAY_TIME,
-    FRAME_DELAY_DEFAULT, WAIT_TIME, BUTTON_WIDTH, BUTTON_HEIGHT, BUTTON_Y_OFFSET,
-    SAVE_BUTTON_WIDTH, RESULT_IMAGE_PATH, TEXT_RESP_PATH
-)
 from models.logger import GameState
 from models.spin_wheel import SpinWheelModel
 from utils import load_json_file
+from constants import (
+    WIDTH, HEIGHT, SPACE_KEY, MOUSE_LEFT_BUTTON, GIF_SCALE_FACTOR, GIF_DISPLAY_TIME,
+    FRAME_DELAY_DEFAULT, WAIT_TIME, BUTTON_WIDTH, BUTTON_HEIGHT, BUTTON_Y_OFFSET,
+    SAVE_BUTTON_WIDTH, RESULT_IMAGE_PATH, TEXT_RESP_PATH, SECOND_IN_MS, WHEEL_RADIUS
+)
+
 
 logger = logging.getLogger(__name__)
 
@@ -50,7 +52,7 @@ class GameController:
         try:
             gif_reader = imageio.get_reader(gif_path)
             try:
-                self.frame_delay = gif_reader.get_meta_data()['duration'] / 1000.0
+                self.frame_delay = gif_reader.get_meta_data()['duration'] / SECOND_IN_MS
             except KeyError:
                 self.frame_delay = FRAME_DELAY_DEFAULT
             for frame_idx in range(gif_reader.get_length()):
@@ -121,7 +123,7 @@ class GameController:
         elif self.game_state.state == GameState.RESULTS:
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == MOUSE_LEFT_BUTTON:
                 mouse_pos = pygame.mouse.get_pos()
-                exit_button = pygame.Rect(WIDTH//2 - 300, HEIGHT + BUTTON_Y_OFFSET, BUTTON_WIDTH, BUTTON_HEIGHT)
+                exit_button = pygame.Rect(WIDTH//2 - WHEEL_RADIUS, HEIGHT + BUTTON_Y_OFFSET, BUTTON_WIDTH, BUTTON_HEIGHT)
                 save_button = pygame.Rect(WIDTH//2, HEIGHT + BUTTON_Y_OFFSET, SAVE_BUTTON_WIDTH, BUTTON_HEIGHT)
                 if exit_button.collidepoint(mouse_pos):
                     logger.info("Exit button clicked")

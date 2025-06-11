@@ -9,7 +9,7 @@ from constants import (
     RESPONSE_Y_GAP, BUTTON_WIDTH, SAVE_BUTTON_WIDTH, BUTTON_HEIGHT, BUTTON_Y_OFFSET,
     EXIT_BUTTON_COLOR, SAVE_BUTTON_COLOR, TEXT_RADIUS_SCALE, FONT_SIZE_REDUCTION,
     CIRCLE_RADIUS, CIRCLE_BORDER_COLOR, CIRCLE_FILL_COLOR, INDICATOR_Y_OFFSET,
-    INDICATOR_SIZE, INDICATOR_COLOR
+    INDICATOR_SIZE, INDICATOR_COLOR, BORDER_THICKNESS, PADDING
 )
 from utils import render_text, draw_button, wrap_text
 
@@ -57,7 +57,7 @@ class GameView:
         self.render_background()
         if gif_frames and current_frame < len(gif_frames):
             frame = gif_frames[current_frame]
-            frame_rect = frame.get_rect(center=(WIDTH // 2, HEIGHT // 2))
+            frame_rect = frame.get_rect(center=CENTER)
             self.screen.blit(frame, frame_rect)
         render_text(self.font, f"Result: {result}", (0, 0, 0), WIDTH // 2, 30, self.screen, center=True)
         text_bg_rect = pygame.Rect(0, HEIGHT + RESPONSE_TEXT_Y_OFFSET, WIDTH, 80)
@@ -81,8 +81,8 @@ class GameView:
             result_y += RESULT_Y_GAP
             render_text(self.small_font, f'"{response}"', (80, 80, 80), WIDTH // 2, result_y, self.screen, center=True)
             result_y += RESPONSE_Y_GAP
-        exit_rect = pygame.Rect(WIDTH//2 - 300, HEIGHT + BUTTON_Y_OFFSET, BUTTON_WIDTH, BUTTON_HEIGHT)
-        save_rect = pygame.Rect(WIDTH//2, HEIGHT + BUTTON_Y_OFFSET, SAVE_BUTTON_WIDTH, BUTTON_HEIGHT)
+        exit_rect = pygame.Rect(WIDTH // 2 - BUTTON_WIDTH - PADDING, HEIGHT + BUTTON_Y_OFFSET, BUTTON_WIDTH, BUTTON_HEIGHT)
+        save_rect = pygame.Rect(WIDTH // 2 + PADDING, HEIGHT + BUTTON_Y_OFFSET, SAVE_BUTTON_WIDTH, BUTTON_HEIGHT)
         draw_button(self.screen, exit_rect, EXIT_BUTTON_COLOR, "Zakończ", self.font)
         draw_button(self.screen, save_rect, SAVE_BUTTON_COLOR if is_saved else EXIT_BUTTON_COLOR, "Zapisz wynik", self.font)
 
@@ -98,7 +98,7 @@ class GameView:
                 points.append((int(x), int(y)))
             color = SEGMENT_COLORS[i % len(SEGMENT_COLORS)]
             pygame.draw.polygon(self.screen, color, points)
-            pygame.draw.polygon(self.screen, (0, 0, 0), points, 2)
+            pygame.draw.polygon(self.screen, (0, 0, 0), points, BORDER_THICKNESS)
             mid_angle = (start_angle + end_angle) / 2
             text_radius = WHEEL_RADIUS * TEXT_RADIUS_SCALE
             text_x = CENTER[0] + text_radius * math.cos(mid_angle)
@@ -108,12 +108,12 @@ class GameView:
             text_rect = text_surface.get_rect(center=(text_x, text_y))
             self.screen.blit(text_surface, text_rect)
         pygame.draw.circle(self.screen, CIRCLE_FILL_COLOR, CENTER, CIRCLE_RADIUS)
-        pygame.draw.circle(self.screen, CIRCLE_BORDER_COLOR, CENTER, CIRCLE_RADIUS, 2)
+        pygame.draw.circle(self.screen, CIRCLE_BORDER_COLOR, CENTER, CIRCLE_RADIUS, BORDER_THICKNESS)
         indicator_point = (CENTER[0], CENTER[1] - WHEEL_RADIUS + INDICATOR_Y_OFFSET)
         indicator_points = [
             indicator_point,
-            (indicator_point[0] - INDICATOR_SIZE, indicator_point[1] - 30),
-            (indicator_point[0] + INDICATOR_SIZE, indicator_point[1] - 30)
+            (indicator_point[0] - INDICATOR_SIZE, indicator_point[1] - INDICATOR_SIZE),
+            (indicator_point[0] + INDICATOR_SIZE, indicator_point[1] - INDICATOR_SIZE)
         ]
         pygame.draw.polygon(self.screen, INDICATOR_COLOR, indicator_points)
-        pygame.draw.polygon(self.screen, (0, 0, 0), indicator_points, 2)
+        pygame.draw.polygon(self.screen, (0, 0, 0), indicator_points, BORDER_THICKNESS)
