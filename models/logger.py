@@ -10,6 +10,7 @@ class GameState(Enum):
     WAITING = "waiting"
     SHOWING_GIF = "showing_gif"
     RESULTS = "results"
+    START = "start"
 
 class GameStateTracker:
     """Manages and tracks the game state.
@@ -23,8 +24,8 @@ class GameStateTracker:
         Args:
             total_draws (int): Total number of draws in the game.
         """
-        self.state = GameState.SPINNING
-        self.current_draw = 0
+        self.state = GameState.WAITING
+        self.current_draw = -1
         self.total_draws = total_draws
         self.results = []
         self.result_responses = []

@@ -82,13 +82,18 @@ def draw_button(surface, rect, base_color, text, font, border_color=SAVE_BUTTON_
     ))
 
 def draw_gradient_background(surface, height, start_color, end_color):
-    """Draw a gradient background.
+    """
+    Handle button click events.
 
     Args:
-        surface: Pygame surface.
-        height (int): Height of the gradient.
-        start_color (tuple): Starting RGB color.
-        end_color (tuple): Ending RGB color.
+        event: Pygame event object.
+        buttons (list): List of buttons in one of the following formats:
+            - tuple: (x, y, w, h, label, ...),
+            - dict with 'rect': pygame.Rect and 'text'/'label'/'action',
+            - legacy dict with 'pos': (x, y) plus optional 'w', 'h', 'label'/'action'.
+
+    Returns:
+        bool: True if a button was clicked.
     """
     for y in range(height):
         ratio = y / height
@@ -100,39 +105,47 @@ def draw_gradient_background(surface, height, start_color, end_color):
         pygame.draw.line(surface, color, (0, y), (surface.get_width(), y))
 
 def handle_button_click(event, buttons):
-    """Handle button click events.
-
-    Args:
-        event: Pygame event object.
-        buttons (list): List of button tuples (x, y, w, h, label) or dicts (pos, w, h, label, action).
-
-    Returns:
-        bool: True if a button was clicked.
     """
-    if event.type == pygame.MOUSEBUTTONDOWN:
-        mouse_pos = pygame.mouse.get_pos()
-        logger.debug(f"Mouse click at {mouse_pos}")
-        for button in buttons:
-            # Handle both tuple and dict formats
-            if isinstance(button, tuple):
-                x, y, w, h, label, *_ = button  # Unpack tuple, ignore extra elements
-                rect = pygame.Rect(x - w // 2, y - h // 2, w, h)
-                button_label = label
-            elif isinstance(button, dict):
-                x = button["pos"][0]
-                y = button["pos"][1]
-                w = button.get("w", MENU_BUTTON_WIDTH)
-                h = button.get("h", MENU_BUTTON_HEIGHT)
-                rect = pygame.Rect(x - w // 2, y - h // 2, w, h)
-                button_label = button.get("label", button.get("action", ""))
-            else:
-                logger.error(f"Unsupported button format: {button}")
-                continue
+    Handle button click events.
 
-            logger.debug(f"Button rect: {rect}")
-            if rect.collidepoint(mouse_pos):
-                logger.info(f"Button clicked: {button_label}")
-                return True
+    buttons can be:
+      - a tuple: (x, y, w, h, label, ...),
+      - a dict containing 'rect': pygame.Rect and 'text'/'label'/'action',
+      - a legacy dict with 'pos': (x, y) plus optional 'w', 'h', 'label'/'action'.
+    """
+    if event.type != pygame.MOUSEBUTTONDOWN:
+        return False
+
+    mouse_pos = pygame.mouse.get_pos()
+    logger.debug(f"Mouse click at {mouse_pos}")
+
+    for button in buttons:
+        if isinstance(button, tuple):
+            x, y, w, h, label, *_ = button
+            rect = pygame.Rect(x - w//2, y - h//2, w, h)
+            button_label = label
+
+        elif isinstance(button, dict) and 'rect' in button:
+            rect = button['rect']
+            button_label = button.get('text') or button.get('label') or button.get('action', '')
+
+
+        elif isinstance(button, dict) and 'pos' in button:
+            x, y = button['pos']
+            w = button.get('w', MENU_BUTTON_WIDTH)
+            h = button.get('h', MENU_BUTTON_HEIGHT)
+            rect = pygame.Rect(x - w//2, y - h//2, w, h)
+            button_label = button.get('label') or button.get('action', '')
+
+        else:
+            logger.error(f"Unsupported button format: {button}")
+            continue
+
+        logger.debug(f"Button rect: {rect}")
+        if rect.collidepoint(mouse_pos):
+            logger.info(f"Button clicked: {button_label}")
+            return True
+
     return False
 
 def wrap_text(text, font, max_width):

@@ -29,7 +29,6 @@ class SpinWheelModel:
         self.segment_angle = FULL_CIRCLE / self.segment_count
         self.angle = 0
         self.target_angle = 0
-        self.angular_velocity = ANG_VELOCITY
         self.deceleration = 0
         self.spinning = False
         self.spin_sound = pygame.mixer.Sound(str(Path(SPIN_SOUND_PATH)))
@@ -41,7 +40,7 @@ class SpinWheelModel:
             self.spinning = True
             self.spin_sound.play(-1)
             modifier = random.uniform(SPIN_VELOCITY_MODIFIER_MIN, SPIN_VELOCITY_MODIFIER_MAX)
-            self.angular_velocity = -random.randint(SPIN_INITIAL_VELOCITY_MIN, SPIN_INITIAL_VELOCITY_MAX) * modifier
+            self.angular_velocity = ANG_VELOCITY * modifier
             additional_rotation = SPIN_ADDITIONAL_ROTATIONS * modifier * FULL_CIRCLE
             self.target_angle = self.angle - additional_rotation
             self.deceleration = (self.angular_velocity ** 2) / (2 * -additional_rotation)

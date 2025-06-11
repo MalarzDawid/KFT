@@ -29,8 +29,8 @@ class InputHandler:
         buttons = [self.view.save_button, self.view.back_button]
         if handle_button_click(event, buttons):
             mouse_pos = pygame.mouse.get_pos()
-            save_rect = pygame.Rect(*self.view.save_button[:4])
-            back_rect = pygame.Rect(*self.view.back_button[:4])
+            save_rect = pygame.Rect(*self.view.save_button["rect"])
+            back_rect = pygame.Rect(*self.view.back_button["rect"])
             if save_rect.collidepoint(mouse_pos):
                 self.done = True
                 logger.info("Save button clicked")
@@ -135,9 +135,11 @@ class ConfigController:
     def update(self, dt):
         """Update and render the configuration UI."""
         if self.input_handler.should_go_back:
+            self.input_handler.go_back = False
             self.state_manager.set_state('menu')
 
         if self.input_handler.is_done:
+            self.input_handler.done = False
             self.state_manager.set_state('menu')
         self.view.render()
 
