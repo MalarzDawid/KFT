@@ -1,5 +1,5 @@
 from openai import OpenAI
-from pydantic import BaseModel, Field, ConfigDict
+from pydantic import BaseModel, ConfigDict
 import json
 
 client = OpenAI(api_key="")
