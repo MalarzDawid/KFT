@@ -2,26 +2,25 @@ import random
 import pygame.mixer
 from pathlib import Path
 import logging
+
 from constants import (
-    SPIN_INITIAL_VELOCITY_MIN, SPIN_INITIAL_VELOCITY_MAX, SPIN_VELOCITY_MODIFIER_MIN,
-    SPIN_VELOCITY_MODIFIER_MAX, SPIN_ADDITIONAL_ROTATIONS, SPIN_SOUND_PATH, FULL_CIRCLE, ANG_VELOCITY,
+    SPIN_INITIAL_VELOCITY_MIN,
+    SPIN_INITIAL_VELOCITY_MAX,
+    SPIN_VELOCITY_MODIFIER_MIN,
+    SPIN_VELOCITY_MODIFIER_MAX,
+    SPIN_ADDITIONAL_ROTATIONS,
+    SPIN_SOUND_PATH,
+    FULL_CIRCLE,
+    ANG_VELOCITY,
     INDICATOR_POSITION
 )
 
 logger = logging.getLogger(__name__)
 
-pygame.mixer.init()
-SPIN_SOUND = pygame.mixer.Sound(Path(SPIN_SOUND_PATH))
-
 class SpinWheelModel:
-    """Manages the spinning wheel's logic.
-
-    This class handles the physics and selection logic of the wheel.
-    """
-
+    """Manages the spinning wheel's logic."""
     def __init__(self, segments):
         """Initialize the SpinWheelModel.
-
         Args:
             segments (list): List of segment labels.
         """
@@ -33,7 +32,7 @@ class SpinWheelModel:
         self.angular_velocity = ANG_VELOCITY
         self.deceleration = 0
         self.spinning = False
-        self.spin_sound = SPIN_SOUND
+        self.spin_sound = pygame.mixer.Sound(str(Path(SPIN_SOUND_PATH)))
         logger.info(f"SpinWheelModel initialized with {self.segment_count} segments")
 
     def spin(self):
@@ -50,7 +49,6 @@ class SpinWheelModel:
 
     def update(self, dt):
         """Update the wheel's rotation.
-
         Args:
             dt (float): Delta time in seconds.
         """
@@ -63,11 +61,10 @@ class SpinWheelModel:
                 self.angle = self.target_angle
                 self.spin_sound.stop()
                 logger.info("Wheel spinning stopped")
-            self.angle %= FULL_CIRCLE
+        self.angle %= FULL_CIRCLE
 
     def get_selected_segment(self):
         """Get the selected segment.
-
         Returns:
             tuple: (selected segment, index string).
         """
